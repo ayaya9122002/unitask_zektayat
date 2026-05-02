@@ -1,8 +1,32 @@
 <!DOCTYPE html>
-<html>
-<head><title>ذكريات السفر</title></head>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>ذكريات السفر</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
-    <h1>أهلًا بكم في تطبيق ذكريات السفر</h1>
-    <p>قريبًا...</p>
+    <h1>🧳 ذكريات سفري</h1>
+
+    <div class="form-container">
+        <h2>➕ أضف ذكرى جديدة</h2>
+        <input type="text" id="memoryTitle" placeholder="عنوان الذّكرى...">
+        <textarea id="memoryDesc" placeholder="وصف الذّكرى..."></textarea>
+        
+        <div class="file-input-wrapper">
+            <button type="button" onclick="document.getElementById('memoryImage').click()">📸 اختر صورة</button>
+            <input type="file" id="memoryImage" accept="image/*" style="display:none">
+            
+        </div>
+        
+        <button onclick="addMemory()">💾 حفظ الذّكرى</button>
+    </div>
+
+    <div class="memories-container">
+        <h2>📸 ذكرياتي</h2>
+        <div id="memoriesGrid"></div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

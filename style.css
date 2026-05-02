@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f9f5ff;
+    padding: 20px;
+    text-align: right;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #9b6b9e;
+    font-size: 2.5em;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #b5838d;
+}
+
+.form-container {
+    background: white;
+    padding: 25px;
+    border-radius: 25px;
+    margin-bottom: 30px;
+    max-width: 500px;
+    margin-right: auto;
+    margin-left: auto;
+    box-shadow: 0 8px 20px rgba(155, 107, 158, 0.15);
+    border: 1px solid #e8d5e8;
+}
+
+input, textarea, button {
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px;
+    border: 1px solid #d9c6d9;
+    border-radius: 15px;
+    font-family: inherit;
+    font-size: 16px;
+    text-align: right;
+    background: #fffefc;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+button {
+    background: #c9a9c9;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #b5838d;
+}
+
+.file-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 10px 0;
+}
+
+.file-input-wrapper button {
+    width: auto;
+    padding: 10px 20px;
+    background: #e0c3e0;
+    color: #5e3a5e;
+}
+
+.file-input-wrapper button:hover {
+    background: #c9a9c9;
+    color: white;
+}
+
+#fileName {
+    color: #9b6b9e;
+    font-size: 14px;
+}
+
+.memories-container {
+    background: white;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0 8px 20px rgba(155, 107, 158, 0.1);
+    border: 1px solid #e8d5e8;
+}
+
+#memoriesGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+.memory-card {
+    border: 1px solid #f0e1f0;
+    padding: 15px;
+    width: 250px;
+    border-radius: 20px;
+    background: #fffbfe;
+    transition: 0.3s;
+    text-align: right;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.memory-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(155, 107, 158, 0.15);
+    border-color: #d9b8d9;
+}
+
+.memory-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.memory-card h3 {
+    margin: 10px 0 5px;
+    color: #9b6b9e;
+}
+
+.memory-card p {
+    color: #6c4a6c;
+    font-size: 14px;
+    margin: 8px 0;
+}
+
+.memory-card small {
+    color: #b5838d;
+    font-size: 12px;
+}
