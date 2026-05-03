@@ -82,4 +82,48 @@ document.getElementById('memoryImage').addEventListener('change', function() {
     } else {
         document.getElementById('fileName').innerText = 'لم يتمّ اختيار أيّ ملف';
     }
+
+});// ==========
+
+// دالة عرض الذكريات مع زر حذف
+function displayMemories() {
+    let memories = JSON.parse(localStorage.getItem('memories') || '[]');
+    let grid = document.getElementById('memoriesGrid');
+    
+    if (!grid) return;
+    
+    if (memories.length === 0) {
+        grid.innerHTML = '<div style="text-align:center; color:#999; padding:20px;">✨ لا توجد ذكريات بعد... أضف أول ذكرى ✨</div>';
+        return;
+    }
+    
+    grid.innerHTML = '';
+    
+    for (let i = 0; i < memories.length; i++) {
+        let memory = memories[i];
+        let card = document.createElement('div');
+        card.style.cssText = 'border:1px solid #ddd; padding:15px; margin:10px; border-radius:8px; background:#fff; box-shadow:0 2px 5px rgba(0,0,0,0.1);';
+        
+        card.innerHTML = `
+            <h3 style="margin:0 0 10px 0; color:#333;">📌 ${escapeHtml(memory.title || '')}</h3>
+            <p style="margin:0 0 10px 0; color:#666;">${escapeHtml(memory.description || '')}</p>
+            <button onclick="deleteMemory(${i})" style="background:#dc3545; color:white; border:none; padding:6px 12px; border-radius:5px; cursor:pointer;">🗑️ حذف</button>
+        `;
+        grid.appendChild(card);
+    }
+}
+
+// دالة حذف الذكرى
+function deleteMemory(index) {
+    if (confirm('⚠️ هل أنت متأكد من حذف هذه الذكرى؟')) {
+        let memories = JSON.parse(localStorage.getItem('memories') || '[]');
+        memories.splice(index, 1);
+        localStorage.setItem('memories', JSON.stringify(memories));
+        displayMemories();
+    }
+}
+
+// تشغيل عرض الذكريات عند تحميل الصفحة
+window.addEventListener('DOMContentLoaded', function() {
+    displayMemories();
 });
