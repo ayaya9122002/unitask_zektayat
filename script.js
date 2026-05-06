@@ -17,7 +17,8 @@ function addMemory() {
                 id: Date.now(),
                 title: title,
                 description: desc,
-                image: e.target.result
+                image: e.target.result,
+                likes: 0
             });
             refreshUI();
             clearForm();
@@ -29,7 +30,8 @@ function addMemory() {
             id: Date.now(),
             title: title,
             description: desc,
-            image: null
+            image: null,
+            likes: 0
         });
         refreshUI();
         clearForm();
@@ -54,6 +56,7 @@ function displayMemories() {
             <h3>🌸 ${escapeHtml(memory.title)}</h3>
             <p>✨ ${escapeHtml(memory.description)}</p>
             <small>📅 ${new Date(memory.id).toLocaleDateString('ar-EG')}</small>
+            <button class="like-btn" onclick="toggleLike(${index})">❤️ أحبها (${memory.likes || 0})</button>
         </div>
     `).join('');
 }
@@ -103,6 +106,14 @@ function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
+}
+
+// ========== ميزة الإعجاب ==========
+function toggleLike(index) {
+    if (memories[index]) {
+        memories[index].likes = (memories[index].likes || 0) + 1;
+        refreshUI();
+    }
 }
 
 document.getElementById('memoryImage').addEventListener('change', function() {
