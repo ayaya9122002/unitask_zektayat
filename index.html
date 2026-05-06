@@ -6,26 +6,40 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>🧳 ذكريات سفري</h1>
+    <div class="container">
+        <h1>🧳 ذكريات سفري</h1>
 
-    <div class="form-container">
-        <h2>➕ أضف ذكرى جديدة</h2>
-        <input type="text" id="memoryTitle" placeholder="عنوان الذّكرى...">
-        <textarea id="memoryDesc" placeholder="وصف الذّكرى..."></textarea>
-        
-        <div class="file-input-wrapper">
-            <button type="button" onclick="document.getElementById('memoryImage').click()">📸 اختر صورة</button>
-            <input type="file" id="memoryImage" accept="image/*" style="display:none">
+        <!-- نموذج الإضافة -->
+        <div class="form-card">
+            <h2>➕ أضف ذكرى جديدة</h2>
+            <input type="text" id="memoryTitle" placeholder="عنوان الذكرى...">
+            <textarea id="memoryDesc" placeholder="وصف الذكرى..."></textarea>
             
+            <div class="file-input">
+                <button type="button" class="btn-secondary" onclick="document.getElementById('memoryImage').click()">📸 اختيار صورة</button>
+                <input type="file" id="memoryImage" accept="image/*" style="display:none">
+                <span id="fileName" class="file-name">لم يتم اختيار ملف</span>
+            </div>
+            
+            <button class="btn-primary" onclick="addMemory()">💾 حفظ الذكرى</button>
         </div>
-        
-        <button onclick="addMemory()">💾 حفظ الذّكرى</button>
-        <button class ="delet-btn" id="deleteMemoryBtn">حذف الذكرى</button>
-    </div>
 
-    <div class="memories-container">
-        <h2>📸 ذكرياتي</h2>
-        <div id="memoriesGrid"></div>
+        <!-- عرض الذكريات (بطاقات) -->
+        <div class="memories-section">
+            <h2>📸 ذكرياتي</h2>
+            <div id="memoriesGrid" class="memories-grid"></div>
+        </div>
+
+        <!-- القائمة المنسدلة للحذف (تحت البطاقات) -->
+        <div class="delete-card">
+            <h2>🗑 حذف ذكرى</h2>
+            <div class="delete-controls">
+                <select id="deleteSelect">
+                    <option value="">-- اختاري ذكرى للحذف --</option>
+                </select>
+                <button class="btn-danger" onclick="deleteSelectedMemory()">🗑 حذف</button>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
