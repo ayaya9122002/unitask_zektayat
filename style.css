@@ -6,142 +6,225 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f9f5ff;
+    background: linear-gradient(135deg, #f8e6f0 0%, #e8d5f5 100%);
+    min-height: 100vh;
     padding: 20px;
-    text-align: right;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 h1 {
     text-align: center;
-    margin-bottom: 20px;
-    color: #9b6b9e;
-    font-size: 2.5em;
+    color: #9b59b6;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 8px rgba(155, 89, 182, 0.2);
 }
 
 h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #b5838d;
+    color: #c084fc;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    border-right: 4px solid #e879f9;
+    padding-right: 12px;
 }
 
-.form-container {
-    background: white;
-    padding: 25px;
+.form-card, .delete-card {
+    background: rgba(255, 255, 255, 0.95);
     border-radius: 25px;
-    margin-bottom: 30px;
-    max-width: 500px;
-    margin-right: auto;
-    margin-left: auto;
-    box-shadow: 0 8px 20px rgba(155, 107, 158, 0.15);
-    border: 1px solid #e8d5e8;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 30px rgba(192, 132, 252, 0.15);
+    border: 1px solid rgba(248, 114, 244, 0.2);
 }
 
-input, textarea, button {
+input, textarea, select {
     width: 100%;
-    margin: 10px 0;
     padding: 12px;
-    border: 1px solid #d9c6d9;
+    margin-bottom: 15px;
+    border: 2px solid #f0d9ff;
     border-radius: 15px;
-    font-family: inherit;
     font-size: 16px;
-    text-align: right;
-    background: #fffefc;
+    font-family: inherit;
+    transition: all 0.3s;
+    background: #fffafc;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #e879f9;
+    box-shadow: 0 0 0 3px rgba(232, 121, 249, 0.1);
 }
 
 textarea {
-    resize: vertical;
     min-height: 80px;
+    resize: vertical;
 }
 
-button {
-    background: #c9a9c9;
-    color: white;
+.btn-primary, .btn-secondary, .btn-danger {
+    padding: 12px 24px;
     border: none;
+    border-radius: 25px;
+    font-size: 16px;
     cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
+    transition: all 0.3s;
+    font-weight: 500;
 }
 
-button:hover {
-    background: #b5838d;
+.btn-primary {
+    background: linear-gradient(135deg, #c084fc 0%, #e879f9 100%);
+    color: white;
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(192, 132, 252, 0.3);
 }
 
-.file-input-wrapper {
+.btn-secondary {
+    background: #d8b4fe;
+    color: #6b21a5;
+}
+
+.btn-danger {
+    background: #f9a8d4;
+    color: #831843;
+    box-shadow: 0 2px 8px rgba(249, 168, 212, 0.3);
+}
+
+.btn-primary:hover, .btn-secondary:hover, .btn-danger:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.file-input {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
+    margin-bottom: 15px;
     flex-wrap: wrap;
-    margin: 10px 0;
 }
 
-.file-input-wrapper button {
-    width: auto;
-    padding: 10px 20px;
-    background: #e0c3e0;
-    color: #5e3a5e;
-}
-
-.file-input-wrapper button:hover {
-    background: #c9a9c9;
-    color: white;
-}
-
-#fileName {
-    color: #9b6b9e;
+.file-name {
+    color: #a855f7;
     font-size: 14px;
 }
 
-.memories-container {
-    background: white;
-    padding: 20px;
-    border-radius: 25px;
-    box-shadow: 0 8px 20px rgba(155, 107, 158, 0.1);
-    border: 1px solid #e8d5e8;
+.delete-controls {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-#memoriesGrid {
-    display: flex;
-    flex-wrap: wrap;
+.delete-controls select {
+    flex: 1;
+    margin-bottom: 0;
+    border-color: #f9a8d4;
+}
+
+.delete-controls .btn-danger {
+    width: auto;
+}
+
+.memories-section {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 25px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 30px rgba(192, 132, 252, 0.15);
+    border: 1px solid rgba(248, 114, 244, 0.2);
+}
+
+.memories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
-    justify-content: flex-start;
+    margin-top: 20px;
 }
 
 .memory-card {
-    border: 1px solid #f0e1f0;
-    padding: 15px;
-    width: 250px;
+    background: #fffafd;
     border-radius: 20px;
-    background: #fffbfe;
-    transition: 0.3s;
-    text-align: right;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    overflow: hidden;
+    transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(216, 180, 254, 0.25);
+    border: 1px solid #f3e8ff;
 }
 
 .memory-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(155, 107, 158, 0.15);
-    border-color: #d9b8d9;
+    box-shadow: 0 12px 28px rgba(192, 132, 252, 0.3);
 }
 
 .memory-card img {
     width: 100%;
-    height: 160px;
+    height: 180px;
     object-fit: cover;
-    border-radius: 15px;
+}
+
+.memory-card .no-image {
+    height: 180px;
+    background: linear-gradient(135deg, #fae8ff 0%, #f3e8ff 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #d8b4fe;
+    font-size: 3rem;
 }
 
 .memory-card h3 {
-    margin: 10px 0 5px;
-    color: #9b6b9e;
+    padding: 15px 15px 5px;
+    color: #a21caf;
+    font-size: 1.2rem;
 }
 
 .memory-card p {
-    color: #6c4a6c;
-    font-size: 14px;
-    margin: 8px 0;
+    padding: 0 15px;
+    color: #86198f;
+    font-size: 0.9rem;
+    line-height: 1.5;
 }
 
 .memory-card small {
-    color: #b5838d;
-    font-size: 12px;
+    display: block;
+    padding: 10px 15px 15px;
+    color: #c084fc;
+    font-size: 0.8rem;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    color: #c084fc;
+    font-size: 1.1rem;
+    background: #fffafc;
+    border-radius: 20px;
+}
+
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23c084fc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+    background-repeat: no-repeat;
+    background-position: left 12px center;
+    padding-right: 35px;
+}
+
+@media (max-width: 768px) {
+    .memories-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .delete-controls {
+        flex-direction: column;
+    }
+    
+    .delete-controls select {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .delete-controls .btn-danger {
+        width: 100%;
+    }
 }
