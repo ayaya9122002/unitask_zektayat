@@ -124,6 +124,6 @@ function deleteMemory(index) {
 }
 
 // تشغيل عرض الذكريات عند تحميل الصفحة
-window.addEventListener('DOMContentLoaded', function() {
-    displayMemories();
-});
+//window.addEventListener('DOMContentLoaded', function() {
+   // displayMemories();
+//});
