@@ -1,10 +1,15 @@
+<<<<<<< HEAD
 name: CI Test
+=======
+name: CI Test - Memory App
+>>>>>>> 00ca77ebb82970c5db579e4e086e6c544eb0cc14
 
 on: push
 
 jobs:
   test:
     runs-on: ubuntu-latest
+<<<<<<< HEAD
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -12,3 +17,20 @@ jobs:
           node-version: '20'
       - run: npm install
       - run: npm test
+=======
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Run tests
+        run: npm test
+>>>>>>> 00ca77ebb82970c5db579e4e086e6c544eb0cc14
