@@ -14,6 +14,17 @@
             <h2>➕ أضف ذكرى جديدة</h2>
             <input type="text" id="memoryTitle" placeholder="عنوان الذكرى...">
             <textarea id="memoryDesc" placeholder="وصف الذكرى..."></textarea>
+            <!-- قائمة التصنيف -->
+<div class="category-select">
+    <label>🏷️ تصنيف الذكرى:</label>
+    <select id="memoryCategory">
+        <option value="سفر">✈️ سفر</option>
+        <option value="أكل">🍕 أكل</option>
+        <option value="مغامرة">⛰️ مغامرة</option>
+        <option value="أصدقاء">👭 أصدقاء</option>
+        <option value="عائلة">👨‍👩‍👧‍👦 عائلة</option>
+    </select>
+</div>
             
             <div class="file-input">
                 <button type="button" class="btn-secondary" onclick="document.getElementById('memoryImage').click()">📸 اختيار صورة</button>

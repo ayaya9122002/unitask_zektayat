@@ -227,4 +227,18 @@ select {
     .delete-controls .btn-danger {
         width: 100%;
     }
+    .category-tag {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin: 10px 0;
+    background-color: #f0f0f0;
+}
+
+.category-tag.سفر { background-color: #e3f2fd; color: #1565c0; }
+.category-tag.أكل { background-color: #fff3e0; color: #e65100; }
+.category-tag.مغامرة { background-color: #e8f5e9; color: #2e7d32; }
+.category-tag.أصدقاء { background-color: #fce4ec; color: #c2185b; }
+.category-tag.عائلة { background-color: #f3e5f5; color: #7b1fa2; }
 }
