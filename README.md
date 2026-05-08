@@ -4,10 +4,7 @@
 
 ## أعضاء الفريق
 - Product Owner: آية
-- Scrum Master: سدرة
-- Developer: سولين
-
+- Scrum Master:سيدرا
 ## خطة الأسبوع الأول
 - [ ] رسم 3 صفحات على ورق (آية)
 - [ ] إعداد قاعدة البيانات MongoDB (سدرة)
-- [ ] تعلم Google Maps Embed API (سولين)
