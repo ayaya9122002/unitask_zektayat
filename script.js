@@ -44,7 +44,8 @@ async function addMemory() {
                 locationName: locationName,
                 lat: coords.lat,
                 lon: coords.lon,
-                likes: 0
+                likes: 0,
+                 category :document.getElementById('memoryCategory').value 
             });
             refreshUI();
             saveMemories();
@@ -61,7 +62,8 @@ async function addMemory() {
             locationName: locationName,
             lat: coords.lat,
             lon: coords.lon,
-            likes: 0
+            likes: 0,
+            category :document.getElementById('memoryCategory').value 
         });
         refreshUI();
         saveMemories();
@@ -86,6 +88,7 @@ function displayMemories() {
                 : '<div class="no-image">🌸🖼️</div>'}
             <h3>🌸 ${escapeHtml(memory.title)}</h3>
             <p>✨ ${escapeHtml(memory.description)}</p>
+            <div> class="category-tag ${memory.category}"${memory.category}</div>
             <small>📅 ${new Date(memory.id).toLocaleDateString('ar-EG')}</small>
             <button class="like-btn" onclick="toggleLike(${index})">❤️ أحبها (${memory.likes || 0})</button>
         </div>
