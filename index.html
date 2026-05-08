@@ -20,6 +20,8 @@
                 <input type="file" id="memoryImage" accept="image/*" style="display:none">
                 <span id="fileName" class="file-name">لم يتم اختيار ملف</span>
             </div>
+
+            <input type="text" id="memoryLocation" placeholder="📍 اسم المكان (مثال: برج إيفل، باريس)" style="margin-bottom: 15px;">
             
             <button class="btn-primary" onclick="addMemory()">💾 حفظ الذكرى</button>
         </div>
@@ -28,6 +30,7 @@
         <div class="memories-section">
             <h2>📸 ذكرياتي</h2>
             <div id="memoriesGrid" class="memories-grid"></div>
+            <button onclick="window.location.href='map.html'" class="btn-primary" style="margin-top:20px;">🗺️ عرض الذكريات على الخريطة</button>
         </div>
 
         <!-- القائمة المنسدلة للحذف (تحت البطاقات) -->
@@ -42,6 +45,8 @@
         </div>
     </div>
 
+    <script src="geocode.js"></script>
+    <script src="script.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

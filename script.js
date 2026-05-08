@@ -1,9 +1,32 @@
 let memories = [];
 
-function addMemory() {
+function saveMemories() {
+    localStorage.setItem('memories', JSON.stringify(memories));
+}
+
+function loadMemories() {
+    const stored = localStorage.getItem('memories');
+    if (stored) {
+        memories = JSON.parse(stored);
+        displayMemories();
+        updateDeleteSelect();
+    }
+}
+
+async function addMemory() {
     const title = document.getElementById('memoryTitle').value.trim();
     const desc = document.getElementById('memoryDesc').value.trim();
     const imageFile = document.getElementById('memoryImage').files[0];
+        // قراءة اسم المكان
+    const locationName = document.getElementById('memoryLocation').value.trim();
+    if (!locationName) {
+        alert('❌ الرجاء إدخال اسم المكان');
+        return;
+    }
+
+    // جلب الإحداثيات من اسم المكان
+    const coords = await getCoordinates(locationName);
+    if (!coords) return;
 
     if (!title || !desc) {
         alert('❌ الرجاء إدخال عنوان ووصف للذكرى');
@@ -18,9 +41,13 @@ function addMemory() {
                 title: title,
                 description: desc,
                 image: e.target.result,
+                locationName: locationName,
+                lat: coords.lat,
+                lon: coords.lon,
                 likes: 0
             });
             refreshUI();
+            saveMemories();
             clearForm();
             alert('✅ تمت إضافة الذكرى بنجاح');
         };
@@ -31,9 +58,13 @@ function addMemory() {
             title: title,
             description: desc,
             image: null,
+            locationName: locationName,
+            lat: coords.lat,
+            lon: coords.lon,
             likes: 0
         });
         refreshUI();
+        saveMemories();
         clearForm();
         alert('✅ تمت إضافة الذكرى بنجاح');
     }
@@ -86,6 +117,7 @@ function deleteSelectedMemory() {
     if (confirm(`💔 هل أنتِ متأكدة من حذف "${memories[index].title}"؟`)) {
         memories.splice(index, 1);
         refreshUI();
+        saveMemories();
         alert('✅ تم حذف الذكرى بنجاح');
     }
 }
@@ -100,6 +132,9 @@ function clearForm() {
     document.getElementById('memoryDesc').value = '';
     document.getElementById('memoryImage').value = '';
     document.getElementById('fileName').innerText = 'لم يتم اختيار أي ملف';
+    if (document.getElementById('memoryLocation')) {
+        document.getElementById('memoryLocation').value = '';
+}
 }
 
 function escapeHtml(text) {
@@ -113,6 +148,7 @@ function toggleLike(index) {
     if (memories[index]) {
         memories[index].likes = (memories[index].likes || 0) + 1;
         refreshUI();
+        saveMemories();
     }
 }
 
@@ -120,3 +156,4 @@ document.getElementById('memoryImage').addEventListener('change', function() {
     const fileName = document.getElementById('memoryImage').files[0]?.name;
     document.getElementById('fileName').innerText = fileName || 'لم يتم اختيار أي ملف';
 });
+loadMemories();
