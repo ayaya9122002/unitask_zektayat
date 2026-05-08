@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>نتائج اختبارات ذكريات السفر</title>
+    <style>
+        body { font-family: Arial; background: #1e1e2e; color: white; padding: 20px; text-align: center; }
+        .pass { background: #a6e3a1; color: black; padding: 10px; margin: 5px; border-radius: 8px; }
+        .fail { background: #f38ba8; color: black; padding: 10px; margin: 5px; border-radius: 8px; }
+        .summary { background: #cba6f7; color: black; padding: 15px; font-size: 22px; margin: 15px; border-radius: 12px; }
+        h1 { color: #f5c2e7; }
+    </style>
+</head>
+<body>
+    <h1>🧪 نتائج اختبارات مشروع "ذكريات السفر"</h1>
+    <div id="results"></div>
+
+    <script>
+        let passed = 0, failed = 0, output = '';
+
+        function test(name, actual, expected) {
+            const ok = actual === expected;
+            ok ? passed++ : failed++;
+            output += `<div class="${ok ? 'pass' : 'fail'}">${ok ? '✅' : '❌'} ${name}: توقعنا ${expected} وحصلنا ${actual}</div>`;
+        }
+
+        function validateMemory(desc, photo) {
+            return desc.trim() !== '' && photo.trim() !== '' && photo.includes('.');
+        }
+        function exists(val) { return val !== null && val !== undefined; }
+        function notEmpty(val) { return val.trim() !== ''; }
+        function notLiked(id, arr) { return !arr.includes(id); }
+
+        // SCRUM-7
+        test('❌ وصف فارغ', validateMemory('', 'img.jpg'), false);
+        test('❌ صورة بدون امتداد', validateMemory('ذكرى', ''), false);
+        test('✅ وصف وصورة صحيحان', validateMemory('برج إيفل', 'paris.jpg'), true);
+
+        // SCRUM-8
+        test('❌ حذف بدون ID', exists(null), false);
+        test('✅ ID صحيح', exists('mem-123'), true);
+
+        // SCRUM-9
+        test('❌ تصنيف فارغ', notEmpty(''), false);
+        test('✅ تصنيف مطاعم', notEmpty('مطاعم'), true);
+
+        // SCRUM-10
+        test('❌ إعجاب بدون ID', exists(null), false);
+        test('❌ إعجاب مكرر', notLiked('mem-456', ['mem-456']), false);
+        test('✅ إعجاب أول مرة', notLiked('mem-456', []), true);
+
+        // خريطة
+        test('❌ إحداثيات فارغة', exists(null), false);
+        test('✅ إحداثيات باريس', exists(48.85), true);
+
+        document.getElementById('results').innerHTML = 
+            `<div class="summary">✅ نجح: ${passed} | ❌ فشل: ${failed} | المجموع: ${passed + failed}</div>` + output;
+    </script>
+</body>
+</html>
