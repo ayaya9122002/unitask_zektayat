@@ -1,8 +1,8 @@
 {
-<<<<<<< HEAD
-  "name": "travel-memories",
+  "name": "unitask-zektayat",
   "version": "1.0.0",
   "description": "ذكريات السفر",
+  "main": "geocode.js",
   "scripts": {
     "test": "jest"
   },
@@ -10,28 +10,3 @@
     "jest": "^29.0.0"
   }
 }
-=======
-  "name": "unitask_zektayat",
-  "version": "1.0.0",
-  "description": "تطبيق بسيط لتسجيل الأماكن التي زرتها مع صورة وتاريخ وتعليق.",
-  "main": "geocode.js",
-  "scripts": {
-    "test": "jest"  
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ayaya9122002/unitask_zektayat.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/ayaya9122002/unitask_zektayat/issues"
-  },
-  "homepage": "https://github.com/ayaya9122002/unitask_zektayat#readme",
-  "devDependencies": {
-    "jest": "^30.4.1"
-  }
-}
->>>>>>> 00ca77ebb82970c5db579e4e086e6c544eb0cc14
